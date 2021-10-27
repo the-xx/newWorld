@@ -9,6 +9,8 @@ import numpy as np
 import time
 import mss
 
+from action import Action
+
 
 _log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -24,9 +26,12 @@ class PlayerContext:
     bbox = None
     screen = None
 
+
     def __init__(self) -> None:
         _log.info("create new player context")
 
+        self.mode = 'DEBUG'
+        self.action = Action()
         # setup screen capture
         # left top right bottom
         self.bbox = self.__get_game_window_box()
@@ -56,9 +61,11 @@ class PlayerContext:
         win32gui.SetForegroundWindow(hwnd)
         return win32gui.GetWindowRect(hwnd)
 
+    def is_debug(self) -> bool:
+        return self.mode == 'DEBUG'
     def set_state(self, state) -> None:
         _log.info(state)
         self._state = state
 
-    def do_something(self):
-        self._state.do_something(self)
+    def step(self):
+        self._state.step(self)

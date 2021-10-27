@@ -8,4 +8,4 @@ context.set_state(IDLE_STATE)
 # for i in range(8):
 
 while not context.halt:
-    context.do_something()
+    context.step()

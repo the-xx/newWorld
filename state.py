@@ -40,6 +40,7 @@ class IdleState(PlayerState):
         else:
             context.set_state(IDLE_STATE)
 
+
 class FishingIdleState(PlayerState):
     def step(self, context: PlayerContext):
         # pull out the rod
@@ -47,12 +48,12 @@ class FishingIdleState(PlayerState):
         context.set_state(CASTING_STATE)
 
 
-
 class CastingState(PlayerState):
     def step(self, context: PlayerContext):
         # action: aim
         # action: release rod
         context.set_state(HOOKING_STATE)
+
 
 class HookingState(PlayerState):
     def step(self, context: PlayerContext):
@@ -67,6 +68,7 @@ class HookingState(PlayerState):
             context.set_state(HOOKING_STATE)
         pass
 
+
 class ReelingState(PlayerState):
     def step(self, context: PlayerContext):
         context.image = context.sct.grab(context.screen)
@@ -80,8 +82,8 @@ class ReelingState(PlayerState):
             # action: hold mouse left / release mouse left
             context.set_state(REELING_STATE)
 
-
         pass
+
 
 class FishingState(PlayerState):
 
@@ -92,6 +94,7 @@ class FishingState(PlayerState):
         if context.is_debug():
             cv2.destroyAllWindows()
         context.set_state(IDLE_STATE)
+
 
 REELING_STATE = ReelingState()
 HOOKING_STATE = HookingState()

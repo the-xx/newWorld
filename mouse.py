@@ -18,12 +18,12 @@ class Mouse:
             win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
             self.pressed_left = False
 
-    def click_left_mouse_key(self, delay_in_milli=0.05, x=None, y=None):
+    def click_left_mouse_key(self, delay_in_milli=50, x=None, y=None):
         if x and y:
             win32api.SetCursorPos((x, y))
             time.sleep(0.02)
         self.press_left_mouse_key()
-        time.sleep(delay_in_milli)
+        time.sleep(delay_in_milli/1000)
         self.release_left_mouse_key()
 
     def press_right_mouse_key(self):
@@ -36,10 +36,10 @@ class Mouse:
             win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, 0, 0)
             self.pressed_right = False
 
-    def click_right_mouse_key(self, delay_in_milli=0.05, x=None, y=None):
+    def click_right_mouse_key(self, delay_in_milli=50, x=None, y=None):
         if x and y:
             win32api.SetCursorPos((x, y))
             time.sleep(0.02)
         self.press_right_mouse_key()
-        time.sleep(delay_in_milli)
+        time.sleep(delay_in_milli/1000)
         self.release_right_mouse_key()

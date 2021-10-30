@@ -164,7 +164,7 @@ class Keyboard:
             self.pressed_key.remove(key)
             win32api.keybd_event(VK_CODE[key], 0, win32con.KEYEVENTF_KEYUP, 0)
 
-    def press_key(self, key, delay_in_milli=0.048):
+    def press_key(self, key, delay_in_milli=50):
         self.pressed_key(key)
-        time.sleep(delay_in_milli)
+        time.sleep(delay_in_milli/1000)
         self.release_key(key)

@@ -26,7 +26,6 @@ class PlayerContext:
     bbox = None
     screen = None
 
-
     def __init__(self) -> None:
         _log.info("create new player context")
 
@@ -45,6 +44,7 @@ class PlayerContext:
     '''
     get coordinates for the game window
     '''
+
     def __get_game_window_box(self):
         def window_enumeration_handler(hwnd, top_windows):
             # Add window title and ID to array.
@@ -63,6 +63,7 @@ class PlayerContext:
 
     def is_debug(self) -> bool:
         return self.mode == 'DEBUG'
+
     def set_state(self, state) -> None:
         _log.info(state)
         self._state = state

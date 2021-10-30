@@ -1,7 +1,37 @@
-import win32api
+import win32api, win32con, time
 
 class Mouse:
     def __init__(self) -> None:
-        pass
-    def click():
-        pass
+        self.pressed_left = False
+        self.pressed_right = False
+
+
+    def press_left_mouse_key(self):
+        if not self.pressed_left:
+            win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
+            self.pressed_left = True
+
+    def release_left_mouse_key(self):
+        if self.pressed_left:
+            win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
+            self.pressed_left = False
+
+    def click_left_mouse_key(self, delay_in_milli=0.05):
+        self.press_left_mouse_key()
+        time.sleep(delay_in_milli)
+        self.release_left_mouse_key()
+
+    def press_right_mouse_key(self):
+        if not self.pressed_right:
+            win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, 0, 0)
+            self.pressed_right = True
+
+    def release_right_mouse_key(self):
+        if self.pressed_right:
+            win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, 0, 0)
+            self.pressed_right = False
+
+    def click_right_mouse_key(self, delay_in_milli=0.05):
+        self.press_right_mouse_key()
+        time.sleep(delay_in_milli)
+        self.release_right_mouse_key()
